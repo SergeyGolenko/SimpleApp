@@ -22,23 +22,33 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RfJ-xM-giu">
                                 <rect key="frame" x="344" y="64" width="50" height="120"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="SAb-8v-1eE">
-                                        <rect key="frame" x="5" y="5" width="40" height="30"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="SAb-8v-1eE">
+                                        <rect key="frame" x="5" y="5" width="40" height="90"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CLB-NC-IHC">
-                                                <rect key="frame" x="0.0" y="0.0" width="40" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="p8N-Aa-QpC"/>
+                                                    <constraint firstAttribute="height" constant="40" id="p8N-Aa-QpC"/>
                                                 </constraints>
                                                 <state key="normal" backgroundImage="fire"/>
                                                 <connections>
                                                     <action selector="didTapUserLocation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jRp-i1-xDH"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AIV-e2-mMJ">
+                                                <rect key="frame" x="0.0" y="50" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="13K-FP-Nad"/>
+                                                </constraints>
+                                                <state key="normal" image="mapIcon"/>
+                                                <connections>
+                                                    <action selector="didTapMapButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HF9-XN-KtV"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.14901960780000001" green="0.65098039220000004" blue="0.82745098039999998" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="SAb-8v-1eE" firstAttribute="top" secondItem="RfJ-xM-giu" secondAttribute="top" constant="5" id="2LA-fB-3Oq"/>
                                     <constraint firstAttribute="width" constant="50" id="Sjm-En-bd0"/>
@@ -71,6 +81,7 @@
     </scenes>
     <resources>
         <image name="fire" width="64" height="64"/>
+        <image name="mapIcon" width="64" height="64"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -20,6 +20,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         centerToUSerLocation()
     }
     
+    @IBAction func didTapMapButton(_ sender: Any) {
+        if mapView.mapType == .standard {
+            mapView.mapType = .hybridFlyover
+        } else {
+            mapView.mapType = .standard
+        }
+    }
+    
     //MARK: - Private Function
     private func centerToUSerLocation(){
         let mapRegion = MKCoordinateRegion(center: mapView.userLocation.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)

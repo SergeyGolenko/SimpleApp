@@ -13,7 +13,8 @@ class MapView: MKMapView {
         super.layoutSubviews()
         
         if let compassView = subviews.filter({ $0.isKind(of: NSClassFromString("MKCompassView")!) }).first {
-            compassView.frame = CGRect(x: 16, y: 40, width: 40, height: 40)
+            compassView.frame = CGRect(x: 16, y: 40, width: 40, height:40)
+            
     }
     
     
