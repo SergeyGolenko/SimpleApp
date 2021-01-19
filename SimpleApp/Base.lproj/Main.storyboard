@@ -19,26 +19,58 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="49E-pv-XR1">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RfJ-xM-giu">
+                                <rect key="frame" x="344" y="64" width="50" height="120"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="SAb-8v-1eE">
+                                        <rect key="frame" x="5" y="5" width="40" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CLB-NC-IHC">
+                                                <rect key="frame" x="0.0" y="0.0" width="40" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="p8N-Aa-QpC"/>
+                                                </constraints>
+                                                <state key="normal" backgroundImage="fire"/>
+                                                <connections>
+                                                    <action selector="didTapUserLocation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jRp-i1-xDH"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="SAb-8v-1eE" firstAttribute="top" secondItem="RfJ-xM-giu" secondAttribute="top" constant="5" id="2LA-fB-3Oq"/>
+                                    <constraint firstAttribute="width" constant="50" id="Sjm-En-bd0"/>
+                                    <constraint firstItem="SAb-8v-1eE" firstAttribute="leading" secondItem="RfJ-xM-giu" secondAttribute="leading" constant="5" id="TuN-ft-kHX"/>
+                                    <constraint firstAttribute="height" constant="120" id="jzq-PI-Ol3"/>
+                                    <constraint firstAttribute="trailing" secondItem="SAb-8v-1eE" secondAttribute="trailing" constant="5" id="xFd-tF-zPt"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="RfJ-xM-giu" secondAttribute="trailing" constant="20" id="HRe-i6-BaY"/>
                             <constraint firstAttribute="trailing" secondItem="49E-pv-XR1" secondAttribute="trailing" id="M71-3A-KeP"/>
                             <constraint firstItem="49E-pv-XR1" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="SpM-wD-0cL"/>
                             <constraint firstAttribute="bottom" secondItem="49E-pv-XR1" secondAttribute="bottom" id="sAO-F4-oma"/>
+                            <constraint firstItem="RfJ-xM-giu" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="vnw-Ab-NMg"/>
                             <constraint firstItem="49E-pv-XR1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="wK3-v6-rTo"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="controlView" destination="RfJ-xM-giu" id="sjV-aW-Qf4"/>
                         <outlet property="mapView" destination="49E-pv-XR1" id="70h-UF-g68"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-17.39130434782609" y="137.94642857142856"/>
+            <point key="canvasLocation" x="186" y="-68"/>
         </scene>
     </scenes>
     <resources>
+        <image name="fire" width="64" height="64"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

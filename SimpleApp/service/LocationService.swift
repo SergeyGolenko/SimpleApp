@@ -55,7 +55,7 @@ extension LocationService: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-       // locationManager.stopUpdatingLocation()
+       locationManager.stopUpdatingLocation()
         let locationM = locations.last
         delegate?.setMapRegion(center: locationM!)
       

@@ -10,9 +10,22 @@ import MapKit
 
 class MapViewController: UIViewController, MKMapViewDelegate {
     
-    
+    @IBOutlet weak var controlView: UIView!
     @IBOutlet weak var mapView: MKMapView!
     private let locationService = LocationService()
+    
+    
+    //MARK: - Action
+    @IBAction func didTapUserLocation(_ sender: Any) {
+        centerToUSerLocation()
+    }
+    
+    //MARK: - Private Function
+    private func centerToUSerLocation(){
+        let mapRegion = MKCoordinateRegion(center: mapView.userLocation.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
+        mapView.setRegion(mapRegion, animated: true)
+    }
+    
     
     
     // alert controller
@@ -36,6 +49,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
         locationService.delegate = self
         mapView.delegate = self
+        controlView.layer.cornerRadius = 8
          
     }
 }
