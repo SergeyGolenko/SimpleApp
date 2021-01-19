@@ -11,7 +11,7 @@ import MapKit
 class MapViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var controlView: UIView!
-    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var mapView: MapView!
     private let locationService = LocationService()
     
     
@@ -50,6 +50,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         locationService.delegate = self
         mapView.delegate = self
         controlView.layer.cornerRadius = 8
+        mapView.showsCompass = true
          
     }
 }
