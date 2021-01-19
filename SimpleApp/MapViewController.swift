@@ -43,10 +43,18 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 // MARK: LocationServiceDelegate
 
 extension MapViewController: LocationServiceDelegate {
+    
+    
+    func setMapRegion(center: CLLocation) {
+        let mapRegion = MKCoordinateRegion(center: center.coordinate, latitudinalMeters: 100, longitudinalMeters: 100)
+        DispatchQueue.main.async { [weak self] in
+            self!.mapView.setRegion(mapRegion, animated: true)
+        }
+    }
+    
     func authorizationDenied() {
         DispatchQueue.main.async { [weak self] in
             guard let weakSelf = self else { return }
-            
             weakSelf.present(weakSelf.locationAlert, animated: true, completion: nil)
         }
     }

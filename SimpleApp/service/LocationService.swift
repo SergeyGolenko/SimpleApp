@@ -9,6 +9,7 @@ import CoreLocation
 
 protocol LocationServiceDelegate: class {
     func authorizationDenied()
+    func setMapRegion(center:CLLocation)
 }
 
 
@@ -31,11 +32,16 @@ class LocationService: NSObject{
         case .denied:
             delegate?.authorizationDenied()
         case .authorizedAlways, .authorizedWhenInUse:
-            break
+           nowStartUpdatingLocation()
         default:
             break
         }
     }
+    
+    private func nowStartUpdatingLocation(){
+        locationManager.startUpdatingLocation()
+    }
+    
 }
 
 extension LocationService: CLLocationManagerDelegate {
@@ -46,5 +52,12 @@ extension LocationService: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error.localizedDescription)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+       // locationManager.stopUpdatingLocation()
+        let locationM = locations.last
+        delegate?.setMapRegion(center: locationM!)
+      
     }
 }
