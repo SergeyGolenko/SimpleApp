@@ -17,6 +17,7 @@
 		2C2E79BC25B731B6005ED33E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2E79BB25B731B6005ED33E /* MapView.swift */; };
 		2C2E79C325B82BD1005ED33E /* POI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2E79C225B82BD1005ED33E /* POI.swift */; };
 		2C2E79C725B82C33005ED33E /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2E79C625B82C33005ED33E /* SearchService.swift */; };
+		2C2E79CB25B83699005ED33E /* MKPlacemark + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2E79CA25B83699005ED33E /* MKPlacemark + Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		2C2E79BB25B731B6005ED33E /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		2C2E79C225B82BD1005ED33E /* POI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POI.swift; sourceTree = "<group>"; };
 		2C2E79C625B82C33005ED33E /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
+		2C2E79CA25B83699005ED33E /* MKPlacemark + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKPlacemark + Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 		2C2E799E25B6F82D005ED33E /* SimpleApp */ = {
 			isa = PBXGroup;
 			children = (
+				2C2E79C925B83668005ED33E /* extension */,
 				2C2E79C125B82BBF005ED33E /* model */,
 				2C2E79BA25B7319D005ED33E /* view */,
 				2C2E79B425B6F8D8005ED33E /* service */,
@@ -101,6 +104,14 @@
 				2C2E79C225B82BD1005ED33E /* POI.swift */,
 			);
 			path = model;
+			sourceTree = "<group>";
+		};
+		2C2E79C925B83668005ED33E /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				2C2E79CA25B83699005ED33E /* MKPlacemark + Extension.swift */,
+			);
+			path = extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,6 +184,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C2E79CB25B83699005ED33E /* MKPlacemark + Extension.swift in Sources */,
 				2C2E79A425B6F82D005ED33E /* MapViewController.swift in Sources */,
 				2C2E79A025B6F82D005ED33E /* AppDelegate.swift in Sources */,
 				2C2E79BC25B731B6005ED33E /* MapView.swift in Sources */,

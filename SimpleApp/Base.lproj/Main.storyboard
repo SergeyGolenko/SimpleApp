@@ -68,7 +68,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AgA-u9-ZkA">
-                                <rect key="frame" x="0.0" y="296" width="414" height="717"/>
+                                <rect key="frame" x="0.0" y="896" width="414" height="717"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IOj-MC-cP9" userLabel="Exit ">
                                         <rect key="frame" x="380" y="4" width="30" height="30"/>
@@ -95,6 +95,9 @@
                                                     <constraint firstAttribute="width" constant="50" id="TRQ-GA-9CA"/>
                                                 </constraints>
                                                 <state key="normal" image="coffee"/>
+                                                <connections>
+                                                    <action selector="didTapPoiButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="W40-O6-yMy"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ab-7Z-TRw" userLabel="Restaurant button">
                                                 <rect key="frame" x="67" y="0.0" width="50" height="50"/>
@@ -102,6 +105,9 @@
                                                     <constraint firstAttribute="width" constant="50" id="zCa-Vo-bSy"/>
                                                 </constraints>
                                                 <state key="normal" image="restaurant"/>
+                                                <connections>
+                                                    <action selector="didTapPoiButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dfT-sx-D4y"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -120,19 +126,19 @@
                                     <constraint firstItem="IOj-MC-cP9" firstAttribute="leading" secondItem="bgW-Ww-0XS" secondAttribute="trailing" constant="20" id="sK4-xs-p64"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kG1-4L-ahK">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kG1-4L-ahK">
                                 <rect key="frame" x="0.0" y="463" width="414" height="399"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellResult" textLabel="MZu-m9-b9i" detailTextLabel="jhO-ru-vxA" style="IBUITableViewCellStyleSubtitle" id="PqG-Xt-Z05">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="55.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="56"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PqG-Xt-Z05" id="p0K-yy-Zhv">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="55.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MZu-m9-b9i">
-                                                    <rect key="frame" x="20" y="10" width="33" height="20.5"/>
+                                                    <rect key="frame" x="20" y="9" width="33" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -158,7 +164,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="AgA-u9-ZkA" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="bottom" constant="-600" id="0HY-jj-2qY"/>
+                            <constraint firstItem="AgA-u9-ZkA" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="0HY-jj-2qY"/>
                             <constraint firstItem="kG1-4L-ahK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="1lJ-Ke-JQx"/>
                             <constraint firstItem="kG1-4L-ahK" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="46n-fd-dpe"/>
                             <constraint firstItem="AgA-u9-ZkA" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="AfL-06-Ler"/>
@@ -168,10 +174,10 @@
                             <constraint firstAttribute="trailing" secondItem="49E-pv-XR1" secondAttribute="trailing" id="M71-3A-KeP"/>
                             <constraint firstItem="49E-pv-XR1" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="SpM-wD-0cL"/>
                             <constraint firstItem="kG1-4L-ahK" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="XFk-7D-D1P"/>
-                            <constraint firstItem="kG1-4L-ahK" firstAttribute="top" secondItem="zFn-16-kcO" secondAttribute="bottom" constant="37" id="jmY-9h-Uic"/>
                             <constraint firstAttribute="bottom" secondItem="49E-pv-XR1" secondAttribute="bottom" id="sAO-F4-oma"/>
                             <constraint firstItem="RfJ-xM-giu" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="vnw-Ab-NMg"/>
                             <constraint firstItem="49E-pv-XR1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="wK3-v6-rTo"/>
+                            <constraint firstItem="kG1-4L-ahK" firstAttribute="top" secondItem="0Ab-7Z-TRw" secondAttribute="bottom" constant="37" id="zis-IK-xBY"/>
                         </constraints>
                     </view>
                     <connections>

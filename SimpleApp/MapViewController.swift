@@ -9,7 +9,11 @@ import UIKit
 import MapKit
 
 class MapViewController: UIViewController, MKMapViewDelegate {
+    //MARK: - Property
+    private var poiType : POIType?
+    private var pois = [POI]()
     
+    //MARK: - Outlet
     @IBOutlet weak var searchViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var controlView: UIView!
     @IBOutlet weak var tableView: UITableView!
@@ -20,6 +24,21 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     
     //MARK: - Action
+    
+    @IBAction func didTapPoiButton(_ sender: UIButton) {
+        switch sender.tag {
+        case 0:
+            poiType = .restaurant
+            print("restaurant")
+        case 1:
+            poiType = .starbucks
+            print("coffee")
+        default:
+        break
+        }
+        searchPOI()
+    }
+    
     @IBAction func didTapUserLocation(_ sender: Any) {
         centerToUSerLocation()
     }
@@ -61,8 +80,34 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
+    private func searchPOI(){
+        guard let poiType = poiType else {return}
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
+        SearchService.poiSearch(for: poiType, around: mapView.centerCoordinate) {[weak self] (mapItems) in
+        self?.updateSearchResult(with: mapItems)
+        }
+    }
     
-    // alert controller
+    private func updateSearchResult(with mapItems: [MKMapItem]) {
+        pois.removeAll()
+        
+        for mapItem in mapItems {
+            if let name = mapItem.name, let address = mapItem.placemark.formattedAddress, let poiType = poiType {
+                let poi = POI(title: name, address: address, coordinate: mapItem.placemark.coordinate, poiType: poiType)
+                pois.append(poi)
+            }
+        }
+        
+        mapView.removeAnnotations(mapView.annotations)
+        mapView.addAnnotations(pois)
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadData()
+        }
+    }
+    
+    
+// alert controller
     private lazy var locationAlert: UIAlertController = {
         let alertController = UIAlertController(title: "Location Authorization", message: "Quest can provide the points of interest based on your current location. To change the location permission please update your Privacy setting.", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -118,11 +163,15 @@ extension MapViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return pois.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellResult", for: indexPath)
+        let poi = pois[indexPath.row]
+        cell.textLabel?.text = poi.title
+        cell.detailTextLabel?.text = poi.subtitleR
+        cell.detailTextLabel?.numberOfLines = 0
         
         return cell
     }

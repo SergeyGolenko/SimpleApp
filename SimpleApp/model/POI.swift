@@ -13,12 +13,12 @@ enum POIType: String {
 class POI: NSObject, MKAnnotation {
     var coordinate: CLLocationCoordinate2D
     let title: String?
-    let subtitle: String?
+    let subtitleR: String?
     let poiType: POIType
     
     init(title: String, address: String, coordinate: CLLocationCoordinate2D, poiType: POIType) {
         self.title = title
-        self.subtitle = address
+        self.subtitleR = address
         self.coordinate = coordinate
         self.poiType = poiType
         
