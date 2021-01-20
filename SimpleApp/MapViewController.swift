@@ -10,7 +10,10 @@ import MapKit
 
 class MapViewController: UIViewController, MKMapViewDelegate {
     
+    @IBOutlet weak var searchViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var controlView: UIView!
+    
+    @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var mapView: MapView!
     private let locationService = LocationService()
     
@@ -18,6 +21,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     //MARK: - Action
     @IBAction func didTapUserLocation(_ sender: Any) {
         centerToUSerLocation()
+    }
+    
+    @IBAction func didTapCloseSlideView(_ sender: Any) {
+        searchView(shown: false)
+    }
+    
+    @IBAction func didTapSearchButton(_ sender: Any) {
+        searchView(shown: true)
     }
     
     @IBAction func didTapMapButton(_ sender: Any) {
@@ -34,6 +45,20 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         mapView.setRegion(mapRegion, animated: true)
     }
     
+    
+    private func searchView(shown: Bool) {
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            guard let weakSelf = self else { return }
+            
+            let viewHeight = weakSelf.searchView.frame.size.height
+            
+            weakSelf.searchViewTopConstraint.constant = shown
+                ? -1 * viewHeight
+                : 0
+            
+            weakSelf.view.layoutIfNeeded()
+        }
+    }
     
     
     // alert controller
@@ -52,13 +77,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         return alertController
     }()
     
-    
+// MARK: - Lifecircle
     override func viewDidLoad() {
         super.viewDidLoad()
         locationService.delegate = self
         mapView.delegate = self
         controlView.layer.cornerRadius = 8
         mapView.showsCompass = true
+        searchView.layer.cornerRadius = 20.0
          
     }
 }
