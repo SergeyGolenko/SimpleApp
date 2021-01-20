@@ -15,6 +15,7 @@
 		2C2E79AC25B6F82F005ED33E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C2E79AA25B6F82F005ED33E /* LaunchScreen.storyboard */; };
 		2C2E79B625B6F8F0005ED33E /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2E79B525B6F8F0005ED33E /* LocationService.swift */; };
 		2C2E79BC25B731B6005ED33E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2E79BB25B731B6005ED33E /* MapView.swift */; };
+		2C2E79C325B82BD1005ED33E /* POI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2E79C225B82BD1005ED33E /* POI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		2C2E79AD25B6F82F005ED33E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C2E79B525B6F8F0005ED33E /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		2C2E79BB25B731B6005ED33E /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		2C2E79C225B82BD1005ED33E /* POI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 		2C2E799E25B6F82D005ED33E /* SimpleApp */ = {
 			isa = PBXGroup;
 			children = (
+				2C2E79C125B82BBF005ED33E /* model */,
 				2C2E79BA25B7319D005ED33E /* view */,
 				2C2E79B425B6F8D8005ED33E /* service */,
 				2C2E799F25B6F82D005ED33E /* AppDelegate.swift */,
@@ -87,6 +90,14 @@
 				2C2E79BB25B731B6005ED33E /* MapView.swift */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		2C2E79C125B82BBF005ED33E /* model */ = {
+			isa = PBXGroup;
+			children = (
+				2C2E79C225B82BD1005ED33E /* POI.swift */,
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,6 +174,7 @@
 				2C2E79A025B6F82D005ED33E /* AppDelegate.swift in Sources */,
 				2C2E79BC25B731B6005ED33E /* MapView.swift in Sources */,
 				2C2E79B625B6F8F0005ED33E /* LocationService.swift in Sources */,
+				2C2E79C325B82BD1005ED33E /* POI.swift in Sources */,
 				2C2E79A225B6F82D005ED33E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

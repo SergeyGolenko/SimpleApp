@@ -12,7 +12,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var searchViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var controlView: UIView!
-    
+    @IBOutlet weak var tableView: UITableView!
+
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var mapView: MapView!
     private let locationService = LocationService()
