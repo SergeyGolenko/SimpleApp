@@ -108,6 +108,23 @@ extension MapViewController: LocationServiceDelegate {
             weakSelf.present(weakSelf.locationAlert, animated: true, completion: nil)
         }
     }
-    
-    
 }
+
+// MARK: -TableViewDataSource and Delegate
+
+extension MapViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellResult", for: indexPath)
+        
+        return cell
+    }
+}
+
