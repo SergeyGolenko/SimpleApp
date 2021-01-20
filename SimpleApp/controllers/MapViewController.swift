@@ -8,23 +8,27 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, MKMapViewDelegate {
+class MapViewController: UIViewController {
     //MARK: - Property
+    // Это enum (для выбора ресторана или кофейни)
     private var poiType : POIType?
+    //Это класс который наследуется от MKAnnotation, с дополнительными свойствами poiType
     private var pois = [POI]()
+    
+    //Экземпляр класса для отслеживания маркера
+    private let locationService = LocationService()
+    //Сохраняет местоположение маркера, нужно для отслеживания изменения
+    var mapCenterLocation: CLLocation?
     
     //MARK: - Outlet
     @IBOutlet weak var searchViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var controlView: UIView!
     @IBOutlet weak var tableView: UITableView!
-
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var mapView: MapView!
-    private let locationService = LocationService()
-    
     
     //MARK: - Action
-    
+    //Присваивает переменной poiType значение для поиска. Потом запускает функцию searchPoi
     @IBAction func didTapPoiButton(_ sender: UIButton) {
         switch sender.tag {
         case 0:
@@ -40,6 +44,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func didTapUserLocation(_ sender: Any) {
+        //центрирует по отношению к положению маркера
         centerToUSerLocation()
     }
     
@@ -51,6 +56,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         searchView(shown: true)
     }
     
+    //Меняет вид карты
     @IBAction func didTapMapButton(_ sender: Any) {
         if mapView.mapType == .standard {
             mapView.mapType = .hybridFlyover
@@ -60,25 +66,26 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     //MARK: - Private Function
+    // Эта функция подтягивает(центрирует) вид карты по отношению к маркеру
     private func centerToUSerLocation(){
         let mapRegion = MKCoordinateRegion(center: mapView.userLocation.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
         mapView.setRegion(mapRegion, animated: true)
     }
     
-    
+    // Показывает или скрывает searchView
     private func searchView(shown: Bool) {
-        UIView.animate(withDuration: 0.3) { [weak self] in
+        UIView.animate(withDuration: 3) { [weak self] in
             guard let weakSelf = self else { return }
             
             let viewHeight = weakSelf.searchView.frame.size.height
             
             weakSelf.searchViewTopConstraint.constant = shown
                 ? -1 * viewHeight
-                : 0
-            
+                : 0 + 200
             weakSelf.view.layoutIfNeeded()
         }
     }
+    
     
     private func searchPOI(){
         guard let poiType = poiType else {return}
@@ -93,7 +100,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         pois.removeAll()
         
         for mapItem in mapItems {
-            if let name = mapItem.name, let address = mapItem.placemark.formattedAddress, let poiType = poiType {
+            if let name = mapItem.name, let address = mapItem.placemark.formattedAddresS, let poiType = poiType {
                 let poi = POI(title: name, address: address, coordinate: mapItem.placemark.coordinate, poiType: poiType)
                 pois.append(poi)
             }
@@ -131,7 +138,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         controlView.layer.cornerRadius = 8
         mapView.showsCompass = true
         searchView.layer.cornerRadius = 20.0
-         
+        mapCenterLocation = CLLocation(latitude: mapView.userLocation.coordinate.latitude, longitude: mapView.userLocation.coordinate.longitude)
     }
 }
 
@@ -141,7 +148,7 @@ extension MapViewController: LocationServiceDelegate {
     
     
     func setMapRegion(center: CLLocation) {
-        let mapRegion = MKCoordinateRegion(center: center.coordinate, latitudinalMeters: 100, longitudinalMeters: 100)
+        let mapRegion = MKCoordinateRegion(center: center.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
         DispatchQueue.main.async { [weak self] in
             self!.mapView.setRegion(mapRegion, animated: true)
         }
@@ -170,10 +177,28 @@ extension MapViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellResult", for: indexPath)
         let poi = pois[indexPath.row]
         cell.textLabel?.text = poi.title
-        cell.detailTextLabel?.text = poi.subtitleR
+        cell.detailTextLabel?.text = poi.subtitle
         cell.detailTextLabel?.numberOfLines = 0
         
         return cell
+    }
+}
+
+// MARK: - MKMapViewDelegate
+
+extension MapViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        if let poiType = poiType {
+            let newCenterLocation = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
+            
+            if let prevMapCenterLocation = mapCenterLocation {
+                // Refresh the POI search if center moves 500 m from previous center
+                if newCenterLocation.distance(from: prevMapCenterLocation) > 500{
+                    mapCenterLocation = newCenterLocation
+                    searchPOI()
+                }
+            }
+        }
     }
 }
 

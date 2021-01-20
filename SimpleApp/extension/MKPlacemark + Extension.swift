@@ -8,7 +8,7 @@
 import MapKit
 
 extension MKPlacemark {
-    var formattedAddress: String? {
+    var formattedAddresS: String? {
         guard
             let streetNumber = subThoroughfare,
             let streetName = thoroughfare,

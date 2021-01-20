@@ -12,7 +12,6 @@ class SearchService {
     
     static func poiSearch(for poiType: POIType, around center: CLLocationCoordinate2D, completion: @escaping SearchHandler) {
         let region = MKCoordinateRegion(center: center, latitudinalMeters: 1000, longitudinalMeters: 1000)
-        
         let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = poiType.rawValue
         request.region = region

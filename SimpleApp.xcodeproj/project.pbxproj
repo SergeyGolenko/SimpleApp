@@ -70,9 +70,9 @@
 				2C2E79C125B82BBF005ED33E /* model */,
 				2C2E79BA25B7319D005ED33E /* view */,
 				2C2E79B425B6F8D8005ED33E /* service */,
-				2C2E799F25B6F82D005ED33E /* AppDelegate.swift */,
+				2C2E79CF25B83D58005ED33E /* controllers */,
 				2C2E79A125B6F82D005ED33E /* SceneDelegate.swift */,
-				2C2E79A325B6F82D005ED33E /* MapViewController.swift */,
+				2C2E799F25B6F82D005ED33E /* AppDelegate.swift */,
 				2C2E79A525B6F82D005ED33E /* Main.storyboard */,
 				2C2E79A825B6F82F005ED33E /* Assets.xcassets */,
 				2C2E79AA25B6F82F005ED33E /* LaunchScreen.storyboard */,
@@ -112,6 +112,14 @@
 				2C2E79CA25B83699005ED33E /* MKPlacemark + Extension.swift */,
 			);
 			path = extension;
+			sourceTree = "<group>";
+		};
+		2C2E79CF25B83D58005ED33E /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2C2E79A325B6F82D005ED33E /* MapViewController.swift */,
+			);
+			path = controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
