@@ -85,6 +85,10 @@
                                         <rect key="frame" x="16" y="24" width="344" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="textFieldEditingChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="FGS-wb-vV3"/>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="OFq-oq-5mg"/>
+                                        </connections>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="zFn-16-kcO">
                                         <rect key="frame" x="16" y="80" width="117" height="50"/>
@@ -183,6 +187,7 @@
                     <connections>
                         <outlet property="controlView" destination="RfJ-xM-giu" id="sjV-aW-Qf4"/>
                         <outlet property="mapView" destination="49E-pv-XR1" id="70h-UF-g68"/>
+                        <outlet property="searchTextField" destination="bgW-Ww-0XS" id="Pl7-1Q-1tu"/>
                         <outlet property="searchView" destination="AgA-u9-ZkA" id="OmC-C1-JHf"/>
                         <outlet property="searchViewTopConstraint" destination="0HY-jj-2qY" id="cTv-C8-FSe"/>
                         <outlet property="tableView" destination="kG1-4L-ahK" id="80p-pM-doq"/>

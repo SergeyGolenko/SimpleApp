@@ -7,7 +7,7 @@
 import MapKit
 
 enum POIType: String {
-    case restaurant, starbucks
+    case restaurant, starbucks, pin
 }
 
 class POI: NSObject, MKAnnotation {
