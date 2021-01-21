@@ -19,6 +19,7 @@ class POIMarkerAnnotationView: MKMarkerAnnotationView{
                 glyphImage = pinImage
             }
             
+           clusteringIdentifier = "cluster"
             canShowCallout = true
             markerTintColor = poi.tintColor
             leftCalloutAccessoryView = button
@@ -31,4 +32,5 @@ class POIMarkerAnnotationView: MKMarkerAnnotationView{
             detailCalloutAccessoryView = addressLabel
         }
     }
+    
 }

@@ -23,14 +23,12 @@ class POIAnnotationView: MKAnnotationView{
                     image = scaledImage
                 }
             }
-            
-            
-            
-            
             canShowCallout = true
             leftCalloutAccessoryView = button
         }
     }
+    
+    
     
     private func resize(image: UIImage, newSize: CGSize) -> UIImage? {
         let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)

@@ -89,7 +89,7 @@ class MapViewController: UIViewController {
     
     // Показывает или скрывает searchView
     private func searchView(shown: Bool) {
-        UIView.animate(withDuration: 3) { [weak self] in
+        UIView.animate(withDuration: 1) { [weak self] in
             guard let weakSelf = self else { return }
             
             let viewHeight = weakSelf.searchView.frame.size.height
@@ -146,6 +146,7 @@ class MapViewController: UIViewController {
     
     private func registerAnnotationView(){
         mapView.register(POIMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+        mapView.register(POIClusterAnnotationView.self, forAnnotationViewWithReuseIdentifier:MKMapViewDefaultClusterAnnotationViewReuseIdentifier)
     }
     
 //    private func addAnnotation(for poi: POI){

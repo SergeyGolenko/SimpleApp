@@ -16,6 +16,7 @@ class POI: NSObject, MKAnnotation {
     let subtitle: String?
     let poiType: POIType
     
+    
     var tintColor: UIColor {
         switch poiType {
         case .restaurant:
