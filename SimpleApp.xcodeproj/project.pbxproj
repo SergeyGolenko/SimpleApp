@@ -18,6 +18,7 @@
 		2C2E79C325B82BD1005ED33E /* POI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2E79C225B82BD1005ED33E /* POI.swift */; };
 		2C2E79C725B82C33005ED33E /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2E79C625B82C33005ED33E /* SearchService.swift */; };
 		2C2E79CB25B83699005ED33E /* MKPlacemark + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2E79CA25B83699005ED33E /* MKPlacemark + Extension.swift */; };
+		2C2E79D525B97998005ED33E /* POIAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2E79D425B97998005ED33E /* POIAnnotationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		2C2E79C225B82BD1005ED33E /* POI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POI.swift; sourceTree = "<group>"; };
 		2C2E79C625B82C33005ED33E /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		2C2E79CA25B83699005ED33E /* MKPlacemark + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKPlacemark + Extension.swift"; sourceTree = "<group>"; };
+		2C2E79D425B97998005ED33E /* POIAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIAnnotationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				2C2E79C225B82BD1005ED33E /* POI.swift */,
+				2C2E79D425B97998005ED33E /* POIAnnotationView.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 				2C2E79BC25B731B6005ED33E /* MapView.swift in Sources */,
 				2C2E79B625B6F8F0005ED33E /* LocationService.swift in Sources */,
 				2C2E79C725B82C33005ED33E /* SearchService.swift in Sources */,
+				2C2E79D525B97998005ED33E /* POIAnnotationView.swift in Sources */,
 				2C2E79C325B82BD1005ED33E /* POI.swift in Sources */,
 				2C2E79A225B6F82D005ED33E /* SceneDelegate.swift in Sources */,
 			);

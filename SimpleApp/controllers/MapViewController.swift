@@ -50,7 +50,7 @@ class MapViewController: UIViewController {
             poiType = .restaurant
             print("restaurant")
         case 1:
-            poiType = .starbucks
+            poiType = .coffee
             print("coffee")
         default:
         break
@@ -114,15 +114,15 @@ class MapViewController: UIViewController {
     
     private func updateSearchResult(with mapItems: [MKMapItem]) {
         pois.removeAll()
-        
+        mapView.removeAnnotations(mapView.annotations)
         for mapItem in mapItems {
             if let name = mapItem.name, let address = mapItem.placemark.formattedAddresS, let poiType = poiType {
                 let poi = POI(title: name, address: address, coordinate: mapItem.placemark.coordinate, poiType: poiType)
+                
+                    //  addAnnotation(for: poi)
                 pois.append(poi)
             }
         }
-        
-        mapView.removeAnnotations(mapView.annotations)
         mapView.addAnnotations(pois)
         DispatchQueue.main.async { [weak self] in
             self?.tableView.reloadData()
@@ -144,6 +144,17 @@ class MapViewController: UIViewController {
         closeSlideView()
     }
     
+    private func registerAnnotationView(){
+        mapView.register(POIAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+    }
+    
+//    private func addAnnotation(for poi: POI){
+//        let annotation = MKPointAnnotation()
+//        annotation.coordinate = poi.coordinate
+//        annotation.title = poi.title
+//        annotation.subtitle = poi.subtitle
+//        mapView.addAnnotation(annotation)
+//    }
     
 // alert controller
     private lazy var locationAlert: UIAlertController = {
@@ -171,6 +182,7 @@ class MapViewController: UIViewController {
         mapView.showsCompass = true
         searchView.layer.cornerRadius = 20.0
         mapCenterLocation = CLLocation(latitude: mapView.userLocation.coordinate.latitude, longitude: mapView.userLocation.coordinate.longitude)
+        registerAnnotationView()
     }
 }
 
@@ -280,7 +292,28 @@ extension MapViewController: MKMapViewDelegate {
             }
         }
     }
+//    
+//   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+//    guard let annotation = annotation as? MKPointAnnotation, let poiType = poiType else {return nil}
+//    let identifier = "pinView-\(poiType.rawValue)"
+//    let annotationView: MKMarkerAnnotationView
+//    if let view = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView{
+//        view.annotation = annotation
+//        annotationView = view
+//    }
+//    else {
+//        annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+//        annotationView.canShowCallout = true
+//        let addressLabel = UILabel()
+//        addressLabel.numberOfLines = 0
+//        addressLabel.text = annotation.subtitle
+//        addressLabel.font = UIFont.systemFont(ofSize: 12)
+//        annotationView.detailCalloutAccessoryView = addressLabel
+//    }
+//     return annotationView
+//    }
 }
+
 
 // MARK: - MKLocalSearchCompleterDelegate
 
