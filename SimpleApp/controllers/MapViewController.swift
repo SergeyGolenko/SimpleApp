@@ -22,6 +22,7 @@ class MapViewController: UIViewController {
     private var searchCompleter = MKLocalSearchCompleter()
     private var completerResults = [MKLocalSearchCompletion]()
     private var completerSearch = false
+    private var previousPinLocation: CLLocation?
     
     //MARK: - Outlet
     @IBOutlet weak var searchViewTopConstraint: NSLayoutConstraint!
@@ -56,6 +57,33 @@ class MapViewController: UIViewController {
         break
         }
         searchPOI()
+    }
+    
+    @IBAction func didTapLongGesture(_ sender: UILongPressGestureRecognizer) {
+        let point = sender.location(in: mapView)
+        let coordinate = mapView.convert(point, toCoordinateFrom: mapView)
+        let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+        
+        if previousPinLocation == nil || previousPinLocation!.distance(from: location) > 10 {
+            previousPinLocation = location
+            
+            CLGeocoder().reverseGeocodeLocation(location) { (placemarks,error) in
+                if error != nil {return}
+                if let clPlacemark = placemarks?.first{
+                    let placemark = MKPlacemark(placemark: clPlacemark)
+                    
+                    if let address = placemark.formattedAddresS{
+                        let poi = POI(title: "Pinned Location", address: address, coordinate: coordinate, poiType: .pin)
+                        self.mapView.addAnnotation(poi)
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    @IBAction func didTapGesture(_ sender: UITapGestureRecognizer) {
+        closeSlideView()
     }
     
     @IBAction func didTapUserLocation(_ sender: Any) {

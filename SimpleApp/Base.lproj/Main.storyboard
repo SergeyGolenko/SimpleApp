@@ -18,6 +18,11 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="49E-pv-XR1" customClass="MapView" customModule="SimpleApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="oW8-0R-Ywf" appends="YES" id="zKd-fb-s2r"/>
+                                    <outletCollection property="gestureRecognizers" destination="x9p-Ke-zLQ" appends="YES" id="paW-8m-Kzh"/>
+                                </connections>
                             </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RfJ-xM-giu">
                                 <rect key="frame" x="344" y="64" width="50" height="120"/>
@@ -194,6 +199,16 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="3" minimumPressDuration="2" id="oW8-0R-Ywf">
+                    <connections>
+                        <action selector="didTapLongGesture:" destination="BYZ-38-t0r" id="QKW-dB-eGg"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <tapGestureRecognizer id="x9p-Ke-zLQ">
+                    <connections>
+                        <action selector="didTapGesture:" destination="BYZ-38-t0r" id="XGJ-Fl-ju6"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="185.50724637681162" y="-68.303571428571431"/>
         </scene>
