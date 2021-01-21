@@ -145,7 +145,7 @@ class MapViewController: UIViewController {
     }
     
     private func registerAnnotationView(){
-        mapView.register(POIAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+        mapView.register(POIMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
     }
     
 //    private func addAnnotation(for poi: POI){
