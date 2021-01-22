@@ -117,7 +117,7 @@ class MapViewController: UIViewController {
     
     // Показывает или скрывает searchView
     private func searchView(shown: Bool) {
-        UIView.animate(withDuration: 1) { [weak self] in
+        UIView.animate(withDuration: 0.2) { [weak self] in
             guard let weakSelf = self else { return }
             
             let viewHeight = weakSelf.searchView.frame.size.height
